@@ -1,0 +1,28 @@
+
+:root {
+  
+  --kinder-red: #FF595E;
+  --kinder-blue: #1982C4;
+  --kinder-green: #8AC926;
+  --kinder-yellow: #FFCA3A;
+  --kinder-purple: #6A4C93;
+  --kinder-white: #FFFFFF;
+  --kinder-background: #F0F8FF;
+
+  
+  --border-thick: 8px;
+  --radius-jumbo: 40px;
+  --shadow-bottom: 0px 10px 0px rgba(0,0,0,0.2);
+  
+  --bg-main: #66CCFF; 
+  --nav-dark: #2E4057; 
+  --btn-red: #FF4D4D;
+  --btn-orange: #FF9F43;
+  --btn-green: #54D04D;
+  --btn-blue: #2E90FF;
+  --btn-purple: #9B59B6;
+  --btn-orange-alt: #FF7F50;
+  --card-shadow: 0px 15px 0px rgba(0,0,0,0.15);
+  --card-radius: 45px;
+
+}
