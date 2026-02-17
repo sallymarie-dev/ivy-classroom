@@ -4,6 +4,8 @@ import GamePage from './GamePage';
 import ClassDojo from './components/ClassDojo';
 import ReadingPage from './components/ReadingPage'; 
 import BuildSentence from './components/BuildSentence';
+import MathPage from './components/MathPage';
+import MathMatch from './components/MathMatch';
 
 export default function App() {
   const [view, setView] = useState({ page: 'home', type: null });
@@ -14,6 +16,8 @@ export default function App() {
 
   const goToHome = () => setView({ page: 'home', type: null });
   const goToReading = () => setView({ page: 'reading-hub', type: null });
+
+const goToMath = () => setView({ page: 'math-hub', type: null });
 
   return (
     <>
@@ -45,6 +49,19 @@ export default function App() {
           onBack={goToHome} 
         />
       )}
+{view.page === 'math-hub' && (
+  <MathPage 
+    onBack={goToHome} 
+    onStartGame={handleNavigation} 
+  />
+)}
+
+{view.page === 'math-match' && (
+  <MathMatch 
+    onBack={goToMath} 
+    onWin={() => console.log("Math Master!")} 
+  />
+)}
 
       {/* Show ClassDojo Page */}
       {view.page === 'dojo' && (
