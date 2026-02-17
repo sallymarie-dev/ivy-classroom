@@ -28,7 +28,7 @@ export default function Dashboard({ onStartGame }) {
 
       <div className="grid-container">
         {/* Reading */}
-        <div className="kid-card clay-glow bg-apple-red" onClick={() => onStartGame('reading', 'game')}>
+        <div className="kid-card clay-glow bg-apple-red" onClick={() => onStartGame('null', 'reading-hub')}>
           <span>🍎</span>
           <h2>Reading</h2>
         </div>
