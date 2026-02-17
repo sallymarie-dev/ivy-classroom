@@ -56,11 +56,14 @@ export default function Dashboard({ onStartGame }) {
                 </div>
 
                 {/* Science */}
-                <div className="kid-card clay-glow bg-purple">
-                    <span>🧪</span>
-                    <h2>Science</h2>
-                </div>
-
+<div 
+    className="kid-card clay-glow bg-purple" 
+    onClick={() => onStartGame(null, 'science-hub')}
+    style={{ cursor: 'pointer' }}
+>
+    <span>🧪</span>
+    <h2>Science</h2>
+</div>
                 {/* Music */}
                 <div className="kid-card clay-glow bg-music-orange">
                     <span>🎺</span>
