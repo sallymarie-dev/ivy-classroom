@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../styles/BuildSentence.css';
 
 const ALL_SENTENCES = [
   { sentence: "The big giraffe ate a green", missing: "leaf", choices: ["leaf", "pizza", "car"] },
@@ -39,7 +40,7 @@ export default function BuildSentence({ onWin, onBack }) {
 
   const playSound = (fileName) => {
     const audio = new Audio(`/${fileName}`);
-    audio.play().catch((err) => console.log("Sound error:", err));
+    audio.play().catch((err) => {});
   };
 
   const handleChoiceClick = (word) => {
@@ -49,8 +50,6 @@ export default function BuildSentence({ onWin, onBack }) {
       setSelectedWord(word);
       setIsCorrect(true);
       setScore(prev => prev + 1);
-      
-      // Updated to your file name: yay.mp3
       playSound('yay.mp3');
 
       setTimeout(() => {
@@ -70,66 +69,34 @@ export default function BuildSentence({ onWin, onBack }) {
   if (gamePool.length === 0) return null;
 
   return (
-    <div className="game-container" style={{ padding: '20px' }}>
-      
-      <div style={{ 
-        display: 'flex', 
-        justifyContent: 'space-between', 
-        alignItems: 'center', 
-        marginBottom: '40px' 
-      }}>
-        <button className="nav-button" onClick={onBack} style={{ padding: '15px 25px' }}>
-          ⬅ Back
-        </button>
-
-        <div className="kid-card clay-glow bg-grass-green" style={{ 
-          padding: '10px 30px', 
-          display: 'flex', 
-          alignItems: 'center', 
-          gap: '15px',
-          borderRadius: '50px',
-          border: 'none'
-        }}>
-          <span style={{ fontSize: '40px' }}>🦒</span>
-          <span style={{ fontSize: '30px', fontWeight: 'bold', color: 'white' }}>
-            {score} / {gamePool.length}
+    <div className="game-container">
+      <div className="sentence-header">
+        <button className="nav-button" onClick={onBack}>⬅ Back</button>
+        <div className="score-pill kid-card clay-glow bg-grass-green">
+          <span style={{ fontSize: '30px' }}>🦒</span>
+          <span style={{ fontSize: '22px', fontWeight: 'bold', color: 'white' }}>
+            {score}/{gamePool.length}
           </span>
         </div>
       </div>
 
-      <div style={{ textAlign: 'center', marginBottom: '60px', padding: '0px 20px' }}>
-        <h2 style={{ fontSize: '40px', color: 'white', lineHeight: '1.6', margin: '0px' }}>
+      <div className="sentence-display">
+        <h2>
           {currentLevel.sentence}{" "}
-          <span style={{ 
-            borderBottom: '5px solid #FF595E', 
-            padding: '0px 10px',
-            color: '#8AC926',
-            display: 'inline',
-            marginLeft: '5px'
-          }}>
-            {isCorrect ? selectedWord : "__________"}
+          <span className="missing-word-slot">
+            {isCorrect ? selectedWord : "____"}
           </span>
         </h2>
       </div>
 
-      <h3 style={{ textAlign: 'center', fontSize: '24px', marginBottom: '30px', color: 'white' }}>
-        Pick the right word:
-      </h3>
+      <h3 style={{ color: 'white', marginBottom: '20px' }}>Pick the right word:</h3>
 
-      <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap' }}>
+      <div className="choice-grid">
         {currentLevel.choices.map((word) => (
           <button 
             key={word}
-            className="kid-card clay-glow bg-sun-yellow"
+            className="choice-button kid-card clay-glow bg-sun-yellow"
             onClick={() => handleChoiceClick(word)}
-            style={{ 
-              padding: '20px 40px', 
-              cursor: 'pointer', 
-              fontSize: '28px',
-              borderRadius: '20px',
-              border: 'none',
-              color: '#333'
-            }}
           >
             {word}
           </button>

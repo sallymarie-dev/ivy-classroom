@@ -1,0 +1,57 @@
+.math-container {
+  padding: 15px;
+  text-align: center;
+}
+
+.math-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.math-card {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: bold;
+  border-radius: 15px;
+  cursor: pointer;
+  border: none;
+  color: white;
+  transition: transform 0.2s ease;
+}
+
+.math-card.hidden {
+  background-color: #577590;
+}
+
+.math-card.flipped {
+  background-color: #43aa8b;
+}
+
+.math-card.matched {
+  background-color: #90be6d;
+  opacity: 0.6;
+  cursor: default;
+}
+
+@media (max-width: 480px) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .math-card {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,86 @@
+.feed-container {
+  padding: 15px;
+  text-align: center;
+}
+
+.feed-header {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.giraffe-display {
+  font-size: 100px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.giraffe-happy {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.hunger-bar-bg {
+  width: 280px;
+  height: 30px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  margin: 0px auto 30px auto;
+  border: 3px solid white;
+  overflow: hidden;
+}
+
+.hunger-bar-fill {
+  height: 100%;
+  background-color: #8ac926;
+  transition: width 0.5s ease;
+}
+
+.food-grid {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.food-card {
+  width: 100px;
+  height: 120px;
+  border: none;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.food-card:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.reward-text {
+  font-size: 20px;
+  color: #ffca3a;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.tomorrow-btn {
+  padding: 15px 30px;
+  font-size: 20px;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  .giraffe-display {
+    font-size: 80px;
+  }
+  .food-card {
+    width: 45%;
+    height: 110px;
+  }
+}
