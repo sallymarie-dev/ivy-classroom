@@ -1,13 +1,12 @@
-import React from 'react';
 
-export default function NavButton({ icon, label, color }) {
+export default function NavButton({ icon, label, color, onClick }) {
   return (
     <button 
-      className="nav-pill" 
+      onClick={onClick} 
       style={{ backgroundColor: color }}
+      className="nav-btn-style"
     >
-      <span className="nav-icon">{icon}</span>
-      <span className="nav-label">{label}</span>
+      <span>{icon}</span> {label}
     </button>
   );
 }
