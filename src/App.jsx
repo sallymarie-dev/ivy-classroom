@@ -36,7 +36,7 @@ const goToScience = () => setView({ page: 'science-hub', type: null });
         />
       )}
 
-      {/* NEW: Direct link to BuildSentence Game */}
+      
       {view.page === 'build-sentence' && (
         <BuildSentence 
           onBack={goToReading} 
@@ -44,7 +44,7 @@ const goToScience = () => setView({ page: 'science-hub', type: null });
         />
       )}
 
-      {/* Show Game Center (Math/Science) */}
+      
       {view.page === 'game' && (
         <GamePage 
           gameType={view.type} 

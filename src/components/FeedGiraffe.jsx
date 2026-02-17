@@ -11,17 +11,17 @@ const FOOD_ITEMS = [
 export default function FeedGiraffe({ onBack }) {
   const [dailyHunger, setDailyHunger] = useState(0);
   const [totalLeaves, setTotalLeaves] = useState(0);
-  const [positionX, setPositionX] = useState(50); // Start in the middle (50%)
+  const [positionX, setPositionX] = useState(50); 
   const MAX_FOOD = 5;
 
-  // Handle keyboard movement
+ 
   useEffect(() => {
     const handleKeyDown = (e) => {
-      const step = 5; // How many pixels/percent to move per click
+      const step = 5; 
       if (e.key === 'ArrowLeft') {
-        setPositionX(prev => Math.max(0, prev - step)); // Boundary check (left)
+        setPositionX(prev => Math.max(0, prev - step)); 
       } else if (e.key === 'ArrowRight') {
-        setPositionX(prev => Math.min(100, prev + step)); // Boundary check (right)
+        setPositionX(prev => Math.min(100, prev + step)); 
       }
     };
 
@@ -50,14 +50,14 @@ export default function FeedGiraffe({ onBack }) {
         <button className="nav-button" onClick={onBack}>⬅️ Back</button>
       </div>
 
-      {/* Giraffe Display with dynamic movement */}
+      
       <div 
         className={`giraffe-display ${dailyHunger >= MAX_FOOD ? 'giraffe-happy' : ''}`}
         style={{ 
           left: `${positionX}%`, 
-          transform: `translateX(-50%)`, // Centers the giraffe on its position
+          transform: `translateX(-50%)`, 
           position: 'relative',
-          transition: 'left 0.1s ease-out', // Smooth movement
+          transition: 'left 0.1s ease-out', 
           fontSize: '80px' 
         }}
       >

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export default function ScienceGame({ onBack }) {
-  const [growth, setGrowth] = useState(10); // Plant height in %
+  const [growth, setGrowth] = useState(10); 
   const [stage, setStage] = useState("Seedling");
 
   const growPlant = (type) => {

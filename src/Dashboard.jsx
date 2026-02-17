@@ -45,8 +45,7 @@ export default function Dashboard({ onStartGame }) {
                     <h2>Recess</h2>
                 </div>
 
-                {/* Math */}
-                {/* Inside Dashboard.jsx */}
+                
                 <div
                     className="kid-card clay-glow bg-ocean-blue"
                     onClick={() => onStartGame(null, 'math-hub')}
