@@ -4,8 +4,11 @@ import './styles/Variables.css';
 import './styles/Crayons.css';
 import './styles/App.css';
 
+export default function Dashboard({ onStartGame, setView }) {
+  const openDojo = () => {
+    window.open('https://home.classdojo.com', '_blank');
+  };
 
-export default function Dashboard({ onStartGame }) {
   return (
     <div className="classroom-body">
       
@@ -14,7 +17,6 @@ export default function Dashboard({ onStartGame }) {
         <div className="nav-button-group">
           <NavButton icon="🏠" label="Home" color="#FF595E" />
           <NavButton icon="🌟" label="Tasks" color="#8AC926" />
-          
           <NavButton 
             icon="🎨" 
             label="Fun" 
@@ -29,7 +31,7 @@ export default function Dashboard({ onStartGame }) {
       </div>
 
       <div className="grid-container">
-        <div className="kid-card clay-glow bg-apple-red">
+        <div className="kid-card clay-glow bg-apple-red" onClick={() => setView('reading')}>
           <span>🍎</span>
           <h2>Reading</h2>
         </div>
@@ -38,22 +40,20 @@ export default function Dashboard({ onStartGame }) {
           <span>🎨</span>
           <h2>Art Time</h2>
         </div>
-
         
-        <div className="kid-card clay-glow bg-grass-green" onClick={onStartGame}>
-          <span>🌳</span>
-          <h2>Recess</h2>
+        <div className="kid-card clay-glow bg-grass-green" onClick={() => setView('feed')}>
+          <span>🦒</span>
+          <h2>Feed Ivy</h2>
         </div>
-
         
-        <div className="kid-card clay-glow bg-ocean-blue" onClick={onStartGame}>
+        <div className="kid-card clay-glow bg-ocean-blue" onClick={() => setView('math')}>
           <span>🔢</span>
           <h2>Math</h2>
         </div>
 
-        <div className="kid-card clay-glow bg-purple">
-          <span>🧪</span>
-          <h2>Science</h2>
+        <div className="kid-card clay-glow" style={{ backgroundColor: '#00D1FF' }} onClick={openDojo}>
+          <span>👹</span>
+          <h2>ClassDojo</h2>
         </div>
 
         <div className="kid-card clay-glow bg-music-orange">
