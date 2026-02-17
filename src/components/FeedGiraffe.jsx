@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/FeedGiraffe.css';
 
 const FOOD_ITEMS = [
@@ -11,7 +11,23 @@ const FOOD_ITEMS = [
 export default function FeedGiraffe({ onBack }) {
   const [dailyHunger, setDailyHunger] = useState(0);
   const [totalLeaves, setTotalLeaves] = useState(0);
+  const [positionX, setPositionX] = useState(50); // Start in the middle (50%)
   const MAX_FOOD = 5;
+
+  // Handle keyboard movement
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      const step = 5; // How many pixels/percent to move per click
+      if (e.key === 'ArrowLeft') {
+        setPositionX(prev => Math.max(0, prev - step)); // Boundary check (left)
+      } else if (e.key === 'ArrowRight') {
+        setPositionX(prev => Math.min(100, prev + step)); // Boundary check (right)
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   const playSound = (fileName) => {
     const audio = new Audio(`/${fileName}`);
@@ -31,10 +47,20 @@ export default function FeedGiraffe({ onBack }) {
   return (
     <div className="feed-container">
       <div className="feed-header">
-        <button className="nav-button" onClick={onBack}>⬅ Back</button>
+        <button className="nav-button" onClick={onBack}>⬅️ Back</button>
       </div>
 
-      <div className={`giraffe-display ${dailyHunger >= MAX_FOOD ? 'giraffe-happy' : ''}`}>
+      {/* Giraffe Display with dynamic movement */}
+      <div 
+        className={`giraffe-display ${dailyHunger >= MAX_FOOD ? 'giraffe-happy' : ''}`}
+        style={{ 
+          left: `${positionX}%`, 
+          transform: `translateX(-50%)`, // Centers the giraffe on its position
+          position: 'relative',
+          transition: 'left 0.1s ease-out', // Smooth movement
+          fontSize: '80px' 
+        }}
+      >
         🦒
       </div>
 
