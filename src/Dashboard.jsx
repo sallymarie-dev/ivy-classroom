@@ -4,14 +4,10 @@ import './styles/Variables.css';
 import './styles/Crayons.css';
 import './styles/App.css';
 
-export default function Dashboard({ onStartGame, setView }) {
-  const openDojo = () => {
-    window.open('https://home.classdojo.com', '_blank');
-  };
-
+export default function Dashboard({ onStartGame }) {
+  
   return (
     <div className="classroom-body">
-      
       <header className="header-nav">
         <h2 className="nav-title">Ivy Classroom 🏫</h2>
         <div className="nav-button-group">
@@ -21,7 +17,7 @@ export default function Dashboard({ onStartGame, setView }) {
             icon="🎨" 
             label="Fun" 
             color="#FFCA3A" 
-            onClick={onStartGame} 
+            onClick={() => onStartGame(null, 'game')} 
           />
         </div>
       </header>
@@ -31,34 +27,50 @@ export default function Dashboard({ onStartGame, setView }) {
       </div>
 
       <div className="grid-container">
-        <div className="kid-card clay-glow bg-apple-red" onClick={() => setView('reading')}>
+        {/* Reading */}
+        <div className="kid-card clay-glow bg-apple-red" onClick={() => onStartGame('reading', 'game')}>
           <span>🍎</span>
           <h2>Reading</h2>
         </div>
         
+        {/* Art Time */}
         <div className="kid-card clay-glow bg-sun-yellow">
           <span>🎨</span>
           <h2>Art Time</h2>
         </div>
         
-        <div className="kid-card clay-glow bg-grass-green" onClick={() => setView('feed')}>
+        {/* Recess / Feed Ivy */}
+        <div className="kid-card clay-glow bg-grass-green" onClick={() => onStartGame('feed', 'game')}>
           <span>🦒</span>
-          <h2>Feed Ivy</h2>
+          <h2>Recess</h2>
         </div>
         
-        <div className="kid-card clay-glow bg-ocean-blue" onClick={() => setView('math')}>
+        {/* Math */}
+        <div className="kid-card clay-glow bg-ocean-blue" onClick={() => onStartGame('math', 'game')}>
           <span>🔢</span>
           <h2>Math</h2>
         </div>
 
-        <div className="kid-card clay-glow" style={{ backgroundColor: '#00D1FF' }} onClick={openDojo}>
-          <span>👹</span>
-          <h2>ClassDojo</h2>
+        {/* Science */}
+        <div className="kid-card clay-glow bg-purple">
+          <span>🧪</span>
+          <h2>Science</h2>
         </div>
 
+        {/* Music */}
         <div className="kid-card clay-glow bg-music-orange">
           <span>🎺</span>
           <h2>Music</h2>
+        </div>
+
+        {/* ClassDojo */}
+        <div 
+          className="kid-card clay-glow" 
+          style={{ backgroundColor: '#00D1FF', cursor: 'pointer' }} 
+          onClick={() => onStartGame(null, 'dojo')}
+        >
+          <span style={{ filter: 'hue-rotate(90deg)' }}>👾</span>
+          <h2>ClassDojo</h2>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/BuildSentence.css';
+import "../styles/BuildSentence.css";
 
 const ALL_SENTENCES = [
     { sentence: "The big giraffe ate a green", missing: "leaf", choices: ["leaf", "pizza", "car"] },
