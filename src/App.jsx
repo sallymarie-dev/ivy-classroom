@@ -8,6 +8,7 @@ import MathPage from './components/MathPage';
 import MathMatch from './components/MathMatch';
 import SciencePage from './components/SciencePage';
 import ArtPage from './components/ArtPage';
+import MusicPage from './components/MusicPage';
 
 export default function App() {
   const [view, setView] = useState({ page: 'home', type: null });
@@ -66,6 +67,9 @@ const goToScience = () => setView({ page: 'science-hub', type: null });
     onBack={goToMath} 
     onWin={() => console.log("Math Master!")} 
   />
+)}
+{view.page === 'music-hub' && (
+  <MusicPage onBack={goToHome} />
 )}
 {view.page === 'science-hub' && (
         <SciencePage 

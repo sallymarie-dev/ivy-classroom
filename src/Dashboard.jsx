@@ -67,10 +67,13 @@ export default function Dashboard({ onStartGame }) {
     <h2>Science</h2>
 </div>
                 {/* Music */}
-                <div className="kid-card clay-glow bg-music-orange">
-                    <span>🎺</span>
-                    <h2>Music</h2>
-                </div>
+                <div 
+    className="kid-card clay-glow bg-music-orange"
+    onClick={() => onStartGame(null, 'music-hub')}
+>
+    <span>🎺</span>
+    <h2>Music</h2>
+</div>
 
                 {/* ClassDojo */}
                 <div

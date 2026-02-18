@@ -4,7 +4,7 @@ import BuildSentence from './components/BuildSentence';
 import FeedGiraffe from './components/FeedGiraffe';
 import ScienceGame from './components/ScienceGame';
 import ArtGame from './components/ArtGame';
-
+import MusicGame from './components/MusicGame';
 export default function GamePage({ onBack }) {
     const [activeGame, setActiveGame] = useState(null);
     const [hasWon, setHasWon] = useState(false);
@@ -14,8 +14,8 @@ export default function GamePage({ onBack }) {
     if (activeGame === 'reading') return <BuildSentence onWin={() => setHasWon(true)} onBack={() => setActiveGame(null)} />;
     if (activeGame === 'feed') return <FeedGiraffe onBack={() => setActiveGame(null)} />;
     if (activeGame === 'science-lab') return <ScienceGame onWin={() => setHasWon(true)} onBack={() => setActiveGame(null)} />;
-if (activeGame === 'art') return <ArtGame onWin={() => setHasWon(true)} onBack={() => setActiveGame(null)} />;
-
+    if (activeGame === 'art') return <ArtGame onWin={() => setHasWon(true)} onBack={() => setActiveGame(null)} />;
+if (activeGame === 'music') return <MusicGame onWin={() => setHasWon(true)} onBack={() => setActiveGame(null)} />;
     return (
         <div className="classroom-body">
             <header className="header-nav">
@@ -47,16 +47,20 @@ if (activeGame === 'art') return <ArtGame onWin={() => setHasWon(true)} onBack={
                     <span>🧪</span>
                     <h2>Science Lab</h2>
                 </div>
-
+                <div className="kid-card clay-glow bg-sun-yellow" onClick={() => setActiveGame('art')}>
+                    <span>🎨</span>
+                    <h2>Art Time</h2>
+                </div>
+                <div className="kid-card clay-glow bg-music-orange" onClick={() => setActiveGame('music')}>
+          <span>🎺</span>
+          <h2>Nature Beats</h2>
+        </div>
                 <div className="kid-card clay-glow bg-grass-green" onClick={() => setActiveGame('science')}>
                     <span>🦒</span>
                     <h2>Feed Giraffe</h2>
                 </div>
             </div>
-<div className="kid-card clay-glow bg-sun-yellow" onClick={() => setActiveGame('art')}>
-          <span>🎨</span>
-          <h2>Art Time</h2>
-        </div>
+
 
             {hasWon && (
                 <div className="win-modal">
