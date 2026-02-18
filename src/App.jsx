@@ -7,6 +7,7 @@ import BuildSentence from './components/BuildSentence';
 import MathPage from './components/MathPage';
 import MathMatch from './components/MathMatch';
 import SciencePage from './components/SciencePage';
+import ArtPage from './components/ArtPage';
 
 export default function App() {
   const [view, setView] = useState({ page: 'home', type: null });
@@ -27,7 +28,9 @@ const goToScience = () => setView({ page: 'science-hub', type: null });
       {view.page === 'home' && (
         <Dashboard onStartGame={handleNavigation} />
       )}
-      
+      {view.page === 'art-hub' && (
+  <ArtPage onBack={goToHome} />
+)}
       {/* Show Reading Hub */}
       {view.page === 'reading-hub' && (
         <ReadingPage 

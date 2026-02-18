@@ -34,10 +34,13 @@ export default function Dashboard({ onStartGame }) {
                 </div>
 
                 {/* Art Time */}
-                <div className="kid-card clay-glow bg-sun-yellow">
-                    <span>🎨</span>
-                    <h2>Art Time</h2>
-                </div>
+<div 
+  className="kid-card clay-glow bg-sun-yellow" 
+  onClick={() => onStartGame(null, 'art-hub')}
+>
+  <span>🎨</span>
+  <h2>Art Time</h2>
+</div>
 
                 {/* Recess / Feed Ivy */}
                 <div className="kid-card clay-glow bg-grass-green" onClick={() => onStartGame('feed', 'game')}>
