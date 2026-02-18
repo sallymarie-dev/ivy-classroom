@@ -12,48 +12,68 @@ export default function MusicGame({ onBack, onWin }) {
   const [playCount, setPlayCount] = useState(0);
 
   const playNote = (note) => {
-    const audio = new Audio(`/sounds/note-${note}.mp3`);
-    audio.play().catch(() => console.log("Add mp3 files to public/sounds!"));
+    // This matches your filenames: c.mp3, d.mp3, etc.
+    const fileName = `${note.toLowerCase()}.mp3`;
+    const audio = new Audio(`/${fileName}`);
     
+    audio.play().catch((err) => {
+      console.warn(`Audio file ${fileName} not found in public folder.`, err);
+    });
+    
+    // Logic to trigger the win modal for tomorrow's QR task
     setPlayCount(prev => {
-      if (prev + 1 === 10) onWin(); // Trigger victory after 10 notes
-      return prev + 1;
+      const nextCount = prev + 1;
+      if (nextCount === 10) {
+        if (onWin) onWin(); 
+      }
+      return nextCount;
     });
   };
 
   return (
-    <div className="music-game-container" style={{ textAlign: 'center' }}>
-      <button onClick={onBack} className="nav-button">⬅️ Back</button>
-      <h2 style={{ color: 'white' }}>Nature Xylophone 🎶</h2>
+    <div className="music-game-container" style={{ textAlign: 'center', padding: '20px' }}>
+      <button onClick={onBack} className="nav-button" style={{ marginBottom: '20px' }}>
+        ⬅️ Back
+      </button>
+      
+      <h2 style={{ color: 'white', marginBottom: '30px' }}>Nature Xylophone 🎶</h2>
       
       <div style={{ 
         display: 'flex', 
-        gap: '10px', 
+        gap: '15px', 
         justifyContent: 'center', 
-        height: '300px', 
-        padding: '20px' 
+        alignItems: 'flex-start',
+        height: '350px' 
       }}>
-        {NOTES.map((n) => (
+        {NOTES.map((n, index) => (
           <div
             key={n.note}
             onClick={() => playNote(n.note)}
             className="kid-card clay-glow"
             style={{ 
               backgroundColor: n.color, 
-              width: '60px', 
-              height: `${200 + (NOTES.indexOf(n) * 20)}px`, // Step effect
+              width: '70px', 
+              height: `${220 + (index * 25)}px`, // Creates the stepped look
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'flex-end',
               justifyContent: 'center',
-              paddingBottom: '20px'
+              paddingBottom: '20px',
+              transition: 'transform 0.1s active'
             }}
+            onMouseDown={(e) => e.currentTarget.style.transform = 'scale(0.95)'}
+            onMouseUp={(e) => e.currentTarget.style.transform = 'scale(1)'}
           >
-            <span style={{ fontWeight: 'bold', color: 'white' }}>{n.note}</span>
+            <span style={{ fontWeight: 'bold', color: 'white', fontSize: '24px' }}>
+              {n.note}
+            </span>
           </div>
         ))}
       </div>
-      <p style={{ color: 'white' }}>Tap the bars to make music!</p>
+      
+      <p style={{ color: 'white', marginTop: '20px', fontSize: '18px' }}>
+        Tap the bars to play! {10 - playCount > 0 ? `Play ${10 - playCount} more notes for a prize!` : "Great job!"}
+      </p>
     </div>
   );
 }
